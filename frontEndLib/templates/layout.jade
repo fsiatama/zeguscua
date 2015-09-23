@@ -1,0 +1,28 @@
+doctype html
+html.no-js(lang='es')
+	include ./includes/head.jade
+	body
+		| <!--[if lt IE 10]>
+		|   <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		| <![endif]-->
+
+		.container
+			.header
+				ul.nav.nav-pills.pull-right
+					li.active: a(href='#') Home
+					li: a(href='#') About
+					li: a(href='#') Contact
+
+				h3.text-muted My Webapp
+
+			.jumbotron
+				h1 'Allo, 'Allo!
+				p.lead Always a pleasure scaffolding your apps.
+				p: a.btn.btn-lg.btn-success(href='#') Splendid!
+
+			block content
+
+			.footer
+				p ♥ from the Yeoman team
+
+		include ./includes/scripts.jade

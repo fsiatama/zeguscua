@@ -1,0 +1,16 @@
+- var urlRoot = '<?= URL_RAIZ; ?>'
+
+head
+	meta(charset='utf-8')
+	meta(name='viewport' content='width=device-width, initial-scale=1')
+	link(rel='apple-touch-icon', href='apple-touch-icon.png')
+
+	<?= $tpl_header; ?>
+
+	link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Muli|Advent+Pro:400,700')
+	link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
+	link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+	link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css')
+	link(rel='stylesheet' href!=urlRoot+'css/main.css')
+	
+	script(src!=urlRoot+'js/vendor/modernizr.js')

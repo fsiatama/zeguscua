@@ -1,0 +1,17 @@
+{
+	"require": {
+		"php": ">=5.3",
+		"phpmailer/phpmailer": "5.*"
+	},
+	"autoload": {
+		"classmap": [
+			"App/Managers",
+			"App/Helpers",
+			"App/Lang",
+			"App/Config"
+		],
+        "psr-4": {
+            "Marcast\\": "App/Core"
+        }
+    }
+}
