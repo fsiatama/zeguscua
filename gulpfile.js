@@ -55,7 +55,7 @@ gulp.task('stylApp:livereload', function() {
   return stylApp().pipe( livereload( { start: true } ) )
 })
 gulp.task('stylApp:watch', function() {
-  return gulp.watch( [ 'frontEndLib/css/**/*.styl' ], ['stylApp'] )
+  return gulp.watch( [ 'frontEndLib/styles/**/*.styl' ], ['stylApp'] )
 })
 
 /********************************** bundle jade ***************************************/
@@ -85,7 +85,7 @@ function htmlTplApp () {
 }
 
 function stylApp () {
-  return gulp.src('frontEndLib/css/main.styl')
+  return gulp.src('frontEndLib/styles/main.styl')
   .pipe(stylus({ use: nib() }))
   .pipe(concat('main.css'))
   .pipe(minify())
