@@ -1,12 +1,16 @@
+@import "nib"
+@import "includes/*"
+
+
 html, body
-  height 100%
+	height 100%
 
 body
-  font-family 'Open Sans', sans-serif
-  font-weight 300
+	font-family 'Open Sans', sans-serif
+	font-weight 300
 
 p
-  color #888
+	color #888
 
 h1,
 h2,
@@ -14,119 +18,258 @@ h3,
 h4,
 h5,
 h6
-  margin 0
-  padding 0
-  font-weight 700
+	margin 0
+	padding 0
+	font-weight 700
 
 a
-  color #58B325
-  &:hover
-    color #398110
-    text-decoration none
-  &:focus
-    outline none
+	color #58B325
+	&:hover
+		color #398110
+		text-decoration none
+	&:focus
+		outline none
 
 img
-  max-width 100%
-  height auto
+	max-width 100%
+	height auto
 
 ul,
 li
-  list-style none
-  padding 0
-  margin 0
+	list-style none
+	padding 0
+	margin 0
 
 .preloader
-  background #fff url('../img/preloader.gif') no-repeat center center
-  bottom 0
-  height 100%
-  left 0
-  overflow hidden
-  position fixed
-  right 0
-  top 0
-  width 100%
-  z-index 99999
+	background #fff url('../img/preloader.gif') no-repeat center center
+	bottom 0
+	height 100%
+	left 0
+	overflow hidden
+	position fixed
+	right 0
+	top 0
+	width 100%
+	z-index 99999
 
 #dot-nav
-  right 10px
-  top 50%
-  margin-top -50px
-  height 100px
-  z-index 999
-  ul
-    list-style none
-    margin 0
-    padding 0
-  li
-    position relative
-    background-color #58B325
-    border 3px solid #58B325
-    border-radius 15px 15px 15px 15px
-    cursor pointer
-    padding 5px
-    height 10px
-    margin 10px 10px 0px 0px
-    width 10px
-    vertical-align bottom
-  a
-    outline 0
-    vertical-align top
-    margin 0px 0px 0px 25px
-    position relative
-    top -5px
+	right 10px
+	top 50%
+	margin-top -50px
+	height 100px
+	z-index 999
+	ul
+		list-style none
+		margin 0
+		padding 0
+	li
+		position relative
+		background-color #58B325
+		border 3px solid #58B325
+		border-radius 15px 15px 15px 15px
+		cursor pointer
+		padding 5px
+		height 10px
+		margin 10px 10px 0px 0px
+		width 10px
+		vertical-align bottom
+	a
+		outline 0
+		vertical-align top
+		margin 0px 0px 0px 25px
+		position relative
+		top -5px
 
 #dot-nav li.active, #dot-nav li:hover
-  background-color #ffffff
+	background-color #ffffff
 
 .awesome-tooltip
-  & + .tooltip
-    & > .tooltip-inner
-      background-color #58B325
-      color #ffffff
-      border 1px solid #58B325
-    &.left
-      & > .tooltip-arrow
-        top 50%
-        right 0
-        margin-top -5px
-        border-top 5px solid transparent
-        border-bottom 5px solid transparent
-        border-left 5px solid #58B325
+	& + .tooltip
+		& > .tooltip-inner
+			background-color #58B325
+			color #ffffff
+			border 1px solid #58B325
+		&.left
+			& > .tooltip-arrow
+				top 50%
+				right 0
+				margin-top -5px
+				border-top 5px solid transparent
+				border-bottom 5px solid transparent
+				border-left 5px solid #58B325
 
 .main
-  width 100%
-  min-height 100%
-  background url(../img/bg.jpg) center center no-repeat fixed
-  background-size cover
-  padding 3em 0 4.5em
-  position relative
-  color #fff
-  h1
-    font-size 36px
-    font-weight 300
+	width 100%
+	min-height 100%
+	background url(../img/bg.jpg) center center no-repeat fixed
+	background-size cover
+	padding 3em 0 4.5em
+	position relative
+	color #fff
+	h1
+		font-size 2.250em
+		font-weight 300
 
 .overlay
-  position absolute
-  width 100%
-  height 100%
-  background rgba(0,0,0,0.6)
-  top 0
+	position absolute
+	width 100%
+	height 100%
+	background rgba(0,0,0,0.6)
+	top 0
 
 .logo
-  text-align center
-  margin-top 60px
-  margin-bottom 50px
+	text-align center
+	margin-top 90px
+	margin-bottom 50px
 
 .welcome-message
-  h1
-    padding-top 21px
-    font-family 'Roboto', sans-serif
-    font-weight 700
-    color #ffffff
-    text-transform uppercase
-    font-size 60px
-    margin-bottom 15px
+	h1
+		font-family 'Roboto', sans-serif
+		font-size 3.7em
+		font-weight 700
+		margin-bottom 15px
+		padding-top 21px
+		text-transform uppercase
+	p
+		font-family 'lato', sans-serif
+		color #ffffff
+
+/*about*/
+
+#about
+	padding-top 120px
+	padding-bottom 80px
+	.quote
+		margin-bottom 30px
+		.quote-icon
+			color #58B325
+			font-size 30px
+			width 45px
+			float left
+		blockquote
+			border 0
+			margin 0
+			padding 0
+			padding-left 45px
+			font-size 18px
+			color #202830
+			font-family 'Lato', sans-serif
+			font-style italic
+			font-weight 700
+			line-height 26px
+			margin-bottom 8px
+		p
+			&.quote-by
+				padding-left 45px
+				color #58B325
+				font-family 'Roboto', sans-serif
+				font-size 14px
+				font-weight 700
+				text-transform uppercase
+	.about-us
+		p
+			font-size 16px
+			color #5d5d5d
+			font-weight 400
+			font-family 'Lato', sans-serif
+			line-height 21px
+			margin-bottom 20px
+		h3
+			font-family 'Roboto', sans-serif
+			font-size 18px
+			font-weight 700
+			text-transform uppercase
+			margin-top 30px
+			margin-bottom 30px
+
+h2
+	&.about-us
+		font-family 'Roboto', sans-serif
+		font-size 24px
+		font-weight 700
+		text-transform uppercase
+		margin-bottom 20px
+
+h2.about-us span, #about .about-us h3 span
+	color #58B325
+
+.about-gallery a,
+.about-gallery a>img,
+.about-gallery a:after,
+.about-gallery a:after,
+.about-gallery a:before,
+.about-gallery .overlay
+	transition all .25s ease
+
+.about-gallery
+	float left
+	margin-bottom 20px
+	text-align center
+	a
+		width 100px
+		height 100px
+		margin 0 5px 5px 0
+		position relative
+		display inline-block
+		overflow hidden
+		z-index 0
+		& > img
+			width 100%
+			height 100%
+		&:hover
+			& > img
+				transform scale(1.1,1.1)
+			.overlay
+				background-color rgba(88,179,37,.8)
+				top 0
+				left 0
+				bottom 0
+				right 0
+		&:after
+			transform rotate(90deg)
+	.overlay
+		position absolute
+		background-color rgba(31,181,172,.0)
+		top 35%
+		left 35%
+		bottom 35%
+		right 35%
+		z-index 1
+
+.about-gallery a:after,
+.about-gallery a:before
+	content ""
+	width 100%
+	height 2px
+	background-color transparent
+	position absolute
+	top 50%
+	left 0%
+	z-index 2
+
+.about-gallery a:hover:after,
+.about-gallery a:hover:before
+	background-color #ffffff
+	width 40%
+	left 30%
 
 
+#separator
+	width 100%
+	background-color #eee
+	background-image url('../img/bg2.jpg')
+	background-attachment fixed
+	background-repeat no-repeat
+	background-position 50% 100%
+	background-size cover
+	position relative
+	overflow hidden
+	p
+		font-family 'lato', sans-serif
+		color #ffffff
 
+.separator-bg-overlay
+	background-color rgba(0,0,0,0.6)
+	padding-top 100px
+	padding-bottom 80px
+	color #ffffff

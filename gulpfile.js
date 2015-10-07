@@ -4,12 +4,16 @@ var uglify     = require('gulp-uglify')
 
 var jade       = require('gulp-jade')
 var rename     = require('gulp-rename')
-var concat     = require('gulp-concat-css')
+var concat     = require('gulp-concat')
 var nib        = require('nib')
 var minify     = require('gulp-minify-css')
 
 var newer      = require('gulp-newer')
 var imagemin   = require('gulp-imagemin')
+
+
+//var imageResize = require('gulp-image-resize')
+var gm = require('gulp-gm')
 
 
 /********************************** bundle images ***************************************/
@@ -34,17 +38,34 @@ gulp.task('images:watch', function() {
 
 })
 
+gulp.task('thumbnails', function () {
+  gulp.src('frontEndLib/img/gallery/*.jpg')
+    .pipe(gm(function (gmfile) {
+     
+      return gmfile.resize(100, 100);
+ 
+    }))
+    //.pipe(imageResize({ width : 100, imageMagick: true })).on('error', swallowError)
+    //.pipe(rename(function (path) { 
+      //console.log(path.basename);
+      //path.basename += "-thumbnail"; 
+    //}))
+    .pipe(gulp.dest('frontEndLib/img/gallery/thumbnail/'));
+});
 
 
 /********************************** bundle js ***************************************/
 
-gulp.task('jsApp', function() {
+gulp.task('jsPlugins', function () {
+  return jsPlugins();
+})
+gulp.task('jsApp', ['jsPlugins'], function() {
   return jsApp()
 })
 
 gulp.task('jsApp:watch', function() {
   
-  return gulp.watch( [ 'frontEndLib/js/**/*.js' ], ['jsApp'] )
+  return gulp.watch( [ 'frontEndLib/js/*.js' ], ['jsApp'] )
 })
 
 /********************************** bundle stylus ***************************************/
@@ -68,9 +89,15 @@ gulp.task('htmlTplApp:watch', function() {
 
 gulp.task( 'watch', ['stylApp:watch', 'htmlTplApp:watch', 'jsApp:watch', 'images:watch'])
 
+function jsPlugins () {
+  return gulp.src('frontEndLib/js/plugins/*.js')
+  .pipe(concat('plugins.js'))
+  .pipe(uglify())
+  .pipe(gulp.dest('./public_html/js/'))
+}
 
-function jsApp (b) {
-  return gulp.src('frontEndLib/js/**/*.js')
+function jsApp () {
+  return gulp.src('frontEndLib/js/*.js')
   .pipe(uglify())
   .pipe(gulp.dest('./public_html/js/'))
 }
@@ -86,8 +113,21 @@ function htmlTplApp () {
 
 function stylApp () {
   return gulp.src('frontEndLib/styles/main.styl')
-  .pipe(stylus({ use: nib() }))
+  .pipe(stylus({ use: nib(), import: ['nib'] }))
   .pipe(concat('main.css'))
   .pipe(minify())
   .pipe(gulp.dest('public_html/css/'))
+}
+
+
+
+
+
+
+function swallowError (error) {
+
+  // If you want details of the error in the console
+  console.log(error.toString());
+
+  this.emit('end');
 }

@@ -23,9 +23,8 @@
             $('#dot-nav li a').removeClass('active').parent('li').removeClass('active');
             $('section').each(function(i, item) {
                 var ele = $(item),
-                    nextTop;
+                    nextTop, thisTop;
 
-                console.log(ele.next().html());
 
                 if (typeof ele.next().offset() != "undefined") {
                     nextTop = ele.next().offset().top;

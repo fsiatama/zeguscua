@@ -18,8 +18,32 @@ section.main
 		.row
 			.col-md-6.col-md-offset-3
 				.logo
-					img.img-responsive.center-block(src='img/logo.png', alt='logo')
+					img.img-responsive.center-block(src='img/logo.svg', alt='Villa Zeguscua')
 		.row
 			.col-md-12
 				.welcome-message.text-center
-					h1 ZEGUSCUA
+					p.lead.text-center
+						| La reinterpretación arquitectónica de una villa
+
+include ./includes/about.jade
+
+#separator
+	.separator-bg-overlay
+		.container
+			.row
+				.col-md-7
+					h2.about-us
+						| La Laguna de 
+						span Ubaque
+					p.lead
+						| Es una de las seis lagunas rituales de los Muiscas.
+						br
+						| Esta balsa en el Museo del Oro fue hallada aquí.
+				.col-md-5
+					a.example-image-link.center-block(href='img/balsa-de-oro.jpg', data-lightbox='balsa-de-oro')
+						img.img-responsive.img-thumbnail(src='img/balsa-de-oro-muisca.jpg', alt='Balsa de oro Muisca')
+					//img.img-responsive.center-block(src='img/balsa-de-oro-muisca.jpg', alt='Balsa de oro Muisca')
+
+
+
+

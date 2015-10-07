@@ -1,2 +1,2 @@
-<title>Música que acompaña tus grandes ideas </title>
-<meta name="description" content="En AudioMu.com encontraras música con Licencias de uso que te permitirán acompañar tus proyectos audiovisuales y creativos." />
+<title>Casas de campo a 60 minutos de Bogotá - En la laguna sagrada de Ubaque</title>
+<meta name="description" content="Zeguscua La mas bella casa de campo, Una autentica villa renacentista en el tropico sobre la laguna sagrada de Ubaque" />
