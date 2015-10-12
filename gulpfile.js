@@ -42,7 +42,7 @@ gulp.task('thumbnails', function () {
   gulp.src('frontEndLib/img/gallery/*.jpg')
     .pipe(gm(function (gmfile) {
      
-      return gmfile.resize(100, 100);
+      return gmfile.resize(200, 200);
  
     }))
     //.pipe(imageResize({ width : 100, imageMagick: true })).on('error', swallowError)

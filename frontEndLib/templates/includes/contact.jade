@@ -1,0 +1,44 @@
+section#contact.pad-top-100.pad-bot-30
+	.container
+		.row
+			.col-md-8
+				form#contactForm(name='sentMessage', novalidate='')
+					.row
+						.col-md-6
+							.form-group
+								input#name.form-control(type='text', placeholder='Nombre *', required='', data-validation-required-message='Please enter your name.')
+								p.help-block.text-danger
+							.form-group
+								input#email.form-control(type='email', placeholder='Email *', required='', data-validation-required-message='Please enter your email address.')
+								p.help-block.text-danger
+							.form-group
+								input#phone.form-control(type='tel', placeholder='Teléfono *', required='', data-validation-required-message='Please enter your phone number.')
+								p.help-block.text-danger
+						.col-md-6
+							.form-group
+								textarea#message.form-control(placeholder='Mensaje *', required='', data-validation-required-message='Please enter a message.')
+								p.help-block.text-danger
+							#success
+							button.contact(type='submit') Enviar
+			.col-md-4
+				h3
+					span Contacto
+				address
+					| Para una visita o información de venta adicional puede contactar a Nelson Prieto 
+				.contact-mobile
+					p
+						span.fa.fa-mobile
+						| 312 - 5678267
+				.contact-mobile
+					p
+						span.fa.fa-mobile
+						| 320 - 2303929
+				.contact-email
+					p
+						span.fa.fa-envelope-o
+						| sorzanog@yahoo.com
+
+
+
+
+				

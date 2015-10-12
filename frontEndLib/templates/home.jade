@@ -3,12 +3,14 @@
 // /PRELOADER
 #dot-nav(data-spy='affix')
 	ul
-		li.awesome-tooltip.active(title='Home')
+		li.awesome-tooltip.active(title='Inicio')
 			a(href='#home')
-		li.awesome-tooltip(title='Services')
-			a(href='#services')
-		li.awesome-tooltip(title='About')
+		li.awesome-tooltip(title='Descripción')
 			a(href='#about')
+		li.awesome-tooltip(title='Zeguscua')
+			a(href='#zeguscua')
+		li.awesome-tooltip(title='Arquitectura')
+			a(href='#architecture')
 		li.awesome-tooltip(title='Contact')
 			a(href='#contact')
 #home
@@ -27,7 +29,7 @@ section.main
 
 include ./includes/about.jade
 
-#separator
+#separator.parallax
 	.separator-bg-overlay
 		.container
 			.row
@@ -35,16 +37,68 @@ include ./includes/about.jade
 					h2.about-us
 						| La Laguna de 
 						span Ubaque
-					p
-						| Es una de las seis lagunas rituales de los Muiscas.
-						br
-						| Esta balsa en el Museo del Oro fue hallada aquí.
+					p.lead
+						strong
+							em
+								| Es una de las seis lagunas rituales de los Muiscas.
+								br
+								| Esta balsa en el Museo del Oro fue hallada aquí.
 				.col-md-5
-					a.example-image-link.center-block(href='img/balsa-de-oro.jpg', data-lightbox='balsa-de-oro')
-						img.img-responsive.img-thumbnail(src='img/balsa-de-oro-muisca.jpg', alt='Balsa de oro Muisca')
-					//img.img-responsive.center-block(src='img/balsa-de-oro-muisca.jpg', alt='Balsa de oro Muisca')
+					a.example-image-link(href='img/balsa-de-oro.jpg', data-lightbox='balsa-de-oro')
+						img.img-responsive.img-thumbnail.center-block(src='img/balsa-de-oro-muisca.jpg', alt='Balsa de oro Muisca')
 
 include ./includes/zeguscua.jade
+
+#separator-2.parallax
+	.separator-bg-overlay
+		.container
+			.row
+				.col-md-7
+					h2.about-us
+						| Conclusión: 
+					p.lead
+						strong Zeguscua 
+						| no es una finca de recreo. Es una experiencia sensorial. 
+						strong 
+							em Villa Zeguscua 
+						| ha sido diseñada especialmente para la recreación intelectual. 
+						| Es un parque de diversiones para el espíritu. 
+						strong 
+							em Zeguscua 
+						| es ideal y muy apropiada para un 
+						em spa 
+						| o un 
+						em hotel boutique 
+						| o para quién busca un refugio personal muy único, aislado de las pretenciones y 
+						| bullicio de otras zonas al estilo Payandé, Anapoima o Mesa de Yeguas.
+					.pull-right
+						a.btn.btn-success.btn-lg(href='./zeguscua_brochure.pdf' target='_blank') 
+							.fa.fa-file-pdf-o 
+							|  Descargar Brochure
+				// right image
+				.col-md-5
+					a.example-image-link(href='img/zeguscua-portico.jpg', data-lightbox='zeguscua-portico')
+						img.visible-md.visible-lg.img-thumbnail.img-responsive.center-block(src='./img/zeguscua-portico.jpg', alt='zeguscua pórtico')
+
+include ./includes/architecture.jade
+
+#separator-4.parallax
+	.separator-bg-overlay
+		.container
+			.row
+				.col-md-12.text-center
+					h2.about-us
+						| Información y 
+						span ventas
+
+include ./includes/contact.jade
+#map-canvas
+
+.footer
+	.container
+		.row
+			.col-md-12.text-center
+				p © Copyright Villa Zeguscua. Todos los derechos reservados
 
 
 

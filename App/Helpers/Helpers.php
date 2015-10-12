@@ -609,24 +609,28 @@ class Helpers
 	{
 		$mail = new PHPMailer;
 
-		//Enable SMTP debugging
 		$mail->isSMTP();
-		//activar utf8 para acentos
-		$mail->CharSet = "UTF­8";
+		//Enable SMTP debugging
 		// 0 = off (for production use)
 		// 1 = client messages
 		// 2 = client and server messages
 		$mail->SMTPDebug = 0;
 		//Ask for HTML-friendly debug output
-		$mail->Debugoutput = 'html';
+		//$mail->Debugoutput = 'html';
 		//Set the hostname of the mail server
-		$mail->Host = 'mail.audiomu.com';
+		$mail->Host = 'mail.paulacastano.com';
 		//Set the SMTP port number - likely to be 25, 465 or 587
 		$mail->Port = 25;
+
 		//Whether to use SMTP authentication
-		$mail->SMTPAuth = false;
+		$mail->SMTPAuth = true;
+
+		$mail->Username = 'contacto@paulacastano.com';
+		
+		$mail->Password = 'P4ul4C4st4no';
+
 		//Set who the message is to be sent from
-		$mail->setFrom('noresponder@audiomu.com', 'AudioMu S.A.S.');
+		$mail->setFrom('contacto@paulacastano.com', 'Paula Castano.');
 		//Set an alternative reply-to address
 		//$mail->addReplyTo('replyto@example.com', 'First Last');
 		//Set who the message is to be sent to
@@ -652,6 +656,8 @@ class Helpers
 				$mail->addAttachment($file);
 			}
 		}
+		//activar utf8 para acentos
+		$mail->CharSet = "UTF-8";
 		//$mail->Encoding = "quotedprintable";
 		
 		//send the message, check for errors
@@ -664,214 +670,6 @@ class Helpers
 		
 		return [
 			'success' => true
-		];
-	}
-
-	public static function getWorldBankStatistics($CountryIsoCode, array $arrMarkers )
-	{
-		$cache   = phpFastCache();
-		$lang    = (empty($_SESSION['lang'])) ? 'es' : $_SESSION['lang'] ;
-		$baseUrl = "http://api.worldbank.org/{$lang}/countries/{$CountryIsoCode}/";
-
-		$now = new DateTime;
-		$now->modify( '-2year' );
-		$yearLast = $now->format('Y');
-		$now->modify( '-4year' );
-		$yearFirst = $now->format('Y');
-
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-
-		$url    = "{$baseUrl}?format=json";
-		$key    = md5($url);
-		$result = $cache->get($key);
-
-		if (is_null($result)) {
-			curl_setopt($ch, CURLOPT_URL, $url);
-			$result = json_decode(curl_exec($ch), true);
-			$cache->set($key, $result, 3600*24*180);
-		}
-
-		$arrGeneralData = $result[1][0];
-
-		$url    = "{$baseUrl}indicators/NY.GDP.MKTP.CD?date={$yearLast}&format=json";
-		$key    = md5($url);
-		$result = $cache->get($key);
-
-		if (is_null($result)) {
-			curl_setopt($ch, CURLOPT_URL, $url);
-			$result = json_decode(curl_exec($ch), true);
-			$cache->set($key, $result, 3600*24*180);
-		}
-
-		$arrPibData = $result[1][0];
-
-		$url    = "{$baseUrl}indicators/NY.GNP.PCAP.CD?date={$yearLast}&format=json";
-		$key    = md5($url);
-		$result = $cache->get($key);
-
-		if (is_null($result)) {
-			curl_setopt($ch, CURLOPT_URL, $url);
-			$result = json_decode(curl_exec($ch), true);
-			$cache->set($key, $result, 3600*24*180);
-		}
-
-		$arrInbData = $result[1][0];
-
-		$url    = "{$baseUrl}indicators/SP.POP.TOTL?date={$yearLast}&format=json";
-		$key    = md5($url);
-		$result = $cache->get($key);
-
-		if (is_null($result)) {
-			curl_setopt($ch, CURLOPT_URL, $url);
-			$result = json_decode(curl_exec($ch), true);
-			$cache->set($key, $result, 3600*24*180);
-		}
-
-		$arrPopulationData = $result[1][0];
-
-		$url    = "{$baseUrl}indicators/NE.RSB.GNFS.ZS?date={$yearFirst}:{$yearLast}&format=json";
-
-		$key    = md5($url);
-		$result = $cache->get($key);
-
-		if (is_null($result)) {
-			curl_setopt($ch, CURLOPT_URL, $url);
-			$result = json_decode(curl_exec($ch), true);
-			$cache->set($key, $result, 3600*24*180);
-		}
-
-		$arrBalanceData = $result[1][0];
-
-		curl_close($ch);
-
-		$markers = ( empty($arrMarkers) ) ? $arrGeneralData['name'] : implode('|', $arrMarkers) ;
-		$mapUrl  = "http://maps.googleapis.com/maps/api/staticmap?markers={$markers}&language={$lang}&sensor=false&size=640x320";
-
-		return [
-			'success'           => true,
-			'arrGeneralData'    => $arrGeneralData,
-			'arrPibData'        => $arrPibData,
-			'arrInbData'        => $arrInbData,
-			'arrPopulationData' => $arrPopulationData,
-			'arrBalanceData'    => $arrBalanceData,
-			'mapUrl'            => $mapUrl,
-		];
-
-	}
-
-	public static function getProductConfig($id)
-	{
-		list($countryId, $product) = explode('-', $id);
-
-		if ( empty($product) ||	empty($countryId) ){
-			return [
-				'success' => false,
-				'error'   => 'unavailable product or country. Please contact with support area'
-			];
-		}
-
-		$lines      = static::getRequire(PATH_APP.'Config/products.config.php');
-		$arrProduct = static::arrayGet($lines, "{$product}");
-		if ( empty($arrProduct) ){
-			return [
-				'success' => false,
-				'error'   => 'unavailable configuration for this product. Please contact with support area'
-			];
-		}
-
-		$arrConfig = static::arrayGet($arrProduct, "countries.{$countryId}");
-		
-		if ( empty($arrConfig) ){
-			return [
-				'success' => false,
-				'error'   => 'unavailable configuration for this country. Please contact with support area'
-			];
-		}
-
-		$arrTrade   = $arrConfig['trade'];
-		$updateInfo = [];
-		foreach ($arrTrade as $trade => $name) {
-			$updateInfo[$trade] = Helpers::getUpdateInfo($product, $countryId, $trade);
-		}
-
-		return [	
-			'success'       => true,
-			'arrConfig'     => $arrConfig,
-			'productId'     => $product,
-			'countryId'     => $countryId,
-			'arrTrade'      => $arrTrade,
-			'updateInfo'    => $updateInfo,
-			'repoClassName' => $arrProduct['repoClassName']
-		];
-	}
-
-	public static function getArrFiltersConfig($params, $onlyNotMandatory = false)
-	{
-		$trade  = $params['trade'];
-		$result = static::getProductConfig($params['id']);
-		if ( ! $result['success'] ) {
-			return $result;
-		}
-
-		$config_path = $result['arrConfig']['config_path'];
-		$lines       = static::getRequire($config_path);
-		$arrFilters  = static::arrayGet($lines, "filters.{$trade}");
-
-		if ( empty($arrFilters) ){
-			return [
-				'success' => false,
-				'error'   => 'unavailable filters configuration for this product. Please contact with support area'
-			];
-		}
-
-		if ($onlyNotMandatory === true) {
-			$arrFilters = static::filterKeyInArrayMulti($arrFilters, 'mandatory', false);
-		}
-
-		return [
-			'success' => true,
-			'arrFilters' => $arrFilters
-		];
-	}
-
-	public static function getArrFieldsConfig($params)
-	{
-
-		$trade  = $params['trade'];
-		$result = static::getProductConfig($params['id']);
-		if ( ! $result['success'] ) {
-			return $result;
-		}
-
-		$config_path = $result['arrConfig']['config_path'];
-		$lines       = static::getRequire($config_path);
-		$arrFields   = static::arrayGet($lines, "fields.{$trade}");
-
-		if ( empty($arrFields) ){
-			return [
-				'success' => false,
-				'error'   => 'unavailable fields configuration for this product. Please contact with support area'
-			];
-		}
-
-		$arr = [];
-
-		foreach($arrFields as $data){
-			$arr[] = [
-				'id'      => $data['field'],
-				'text'    => $data['name'],
-				'leaf'    => true,
-				'checked' => false
-			];
-		}
-
-		return [
-			'success' => true,
-			'arrFields' => $arrFields,
-			'treeConfig' => $arr
 		];
 	}
 

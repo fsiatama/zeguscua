@@ -40,6 +40,13 @@ li
 	padding 0
 	margin 0
 
+.mar-top50
+	margin-top 50px
+.mar-top70
+	margin-top 70px
+.mar-bot70
+	margin-bottom 70px
+
 .preloader
 	background #fff url('../img/preloader.gif') no-repeat center center
 	bottom 0
@@ -143,7 +150,7 @@ li
 		margin-bottom 30px
 		.quote-icon
 			color #58B325
-			font-size 30px
+			font-size 3em
 			width 45px
 			float left
 		blockquote
@@ -202,7 +209,6 @@ h2.about-us span, .about .about-us h3 span
 	transition all .25s ease
 
 .about-gallery
-	float left
 	margin-bottom 20px
 	text-align center
 	a
@@ -253,28 +259,147 @@ h2.about-us span, .about .about-us h3 span
 	width 40%
 	left 30%
 
-
-#separator
+.parallax
 	width 100%
 	background-color #eee
-	background-image url('../img/bg2.jpg')
 	background-attachment fixed
 	background-repeat no-repeat
 	background-position 50% 100%
 	background-size cover
 	position relative
 	overflow hidden
-	p
+	p, .btn
 		font-family 'Lato', sans-serif
-		font-style italic
-		font-weight 700
-		font-size 18px
-		line-height 26px
-		padding 20px 0
 		color #ffffff
+	
+#separator
+	background-image url('../img/bg2.jpg')
+	text-align center
 
 .separator-bg-overlay
 	background-color rgba(0,0,0,0.6)
 	padding-top 80px
 	padding-bottom 60px
 	color #ffffff
+	
+#separator-2
+	background-image url('../img/bg3.jpg')
+#separator-3
+	background-image url('../img/bg4.jpg')
+#separator-4
+	background-color #202830
+
+#map-canvas
+	width 100%
+	height 350px
+
+.footer
+	padding-top 30px
+	padding-bottom 20px
+	background-color #202830
+	p
+		font-family 'lato', sans-serif
+		font-weight 400
+		color #ffffff
+		margin 0
+		padding 0
+
+#contact
+	padding-top 120px
+	padding-bottom 60px
+
+.form-group
+	margin-bottom 30px
+	input
+		&.form-control
+			height 60px
+	textarea
+		&.form-control
+			height 150px
+
+.form-group input,
+	.form-group textarea
+		padding 9px
+		border 1px solid #dddddd
+		background-color transparent
+		border-radius 2px
+		box-shadow none
+		font-family 'Lato', sans-serif
+		font-size 14px
+		font-style italic
+
+.form-control
+	&:focus
+		box-shadow none
+		border-color #9b9b9b
+
+.text-danger
+	color #e74c3c
+
+#contact
+	address
+		color #5d5d5d
+		font-family 'lato', sans-serif
+		font-size 16px
+		font-weight 700
+	h3
+		font-family 'Roboto', sans-serif
+		font-size 18px
+		font-weight 700
+		text-transform uppercase
+		margin-bottom 20px
+		span
+			color #58B325
+	.contact-mobile
+		p
+			span
+				font-size 22px
+				color #58B325
+				padding-right 14px
+
+#contact .contact-number p span,
+#contact .contact-mobile p span,
+#contact .contact-fax p span,
+#contact .contact-email p span
+	font-size 18px
+	color #58B325
+	padding-right 10px
+
+#contact .contact-number p,
+#contact .contact-mobile p,
+#contact .contact-fax p,
+#contact .contact-email p
+	font-family 'lato', sans-serif
+	color #202830
+	font-weight 700
+	margin-bottom 10px
+
+button.contact, button.contact:hover,
+#contact .footer-social ul.footer-social-list li a i,
+#contact .footer-social ul.footer-social-list li a i:hover
+	transition all 0.6s linear
+
+button
+	&.contact
+		width 100%
+		background-color #58B325
+		font-family 'Roboto', sans-serif
+		font-weight 700
+		text-transform uppercase
+		color #ffffff
+		padding-top 20px
+		padding-bottom 20px
+		border 0
+		box-shadow none
+		box-shadow 0
+		border-radius 2px
+		margin-bottom 40px
+		&:hover
+			background-color #398110
+			border 0
+			color #ffffff
+	
+
+
+//@media (min-width: 768px)
+
