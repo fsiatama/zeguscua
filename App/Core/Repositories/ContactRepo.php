@@ -48,7 +48,7 @@ class ContactRepo {
 		$result = [
 			'success' => true,
 			'url' => URL_RAIZ,
-			'msg' => 'Gracias por comunicarte, pronto me pondré en contacto contigo'
+			'msg' => 'Gracias por comunicarse. pronto nos pondremos en contacto'
 		];
 
 		return $result;
